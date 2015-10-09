@@ -1,0 +1,31 @@
+name: Vikash Loomba
+author: Vikash Loomba
+baseurl: 
+description: Software Engineer from the PNW.
+github: http://www.github.com/VikashLoomba
+twitter: http://www.twitter.com/vikashloomba
+# facebook: http://www.facebook.com
+linkedin: http://www.linkedin.com/in/valoomba
+email: me@vikashloomba.com
+# location: 42°2'16"N   70°12'47"W
+# disqus: diqus-username
+
+##Make sure to edit the above fields, especially for disqus.
+
+
+highlighter: pygments
+markdown: redcarpet
+redcarpet:
+  extensions: ["tables"]
+
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "default"
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
