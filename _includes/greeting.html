@@ -1,36 +1,172 @@
   </div>
   <div class="container">
+  	<link href="{{ site.baseurl }}/css/buttons.css" rel="stylesheet">
     <div ng-app="myApp" id="welcome-greeting">
-      <h1>Hey Visitor! Here's a little bit about my experience.</h1>
-      <h2>Mobile Development: <h1><i class="devicon-apple-original colored"></i></h1>(Swift) </h2>
-      <h2>Front-end languages: <h1><i class="devicon-html5-plain-wordmark colored"></i> <i class="devicon-css3-plain-wordmark colored"></i> </h1></h2>
-      <h2>Front-end frameworks: <h1><i class="devicon-angularjs-plain colored"></i> <i class="devicon-bootstrap-plain-wordmark colored"></i></h1></h2>
-      <h2>Back-end languages: <h1><i class="devicon-javascript-plain colored"></i> <i class="devicon-php-plain colored"></i></h1></h2>
-      <h2>Back-end frameworks: <h1><i class="devicon-codeigniter-plain-wordmark colored"></i> <i class="devicon-nodejs-plain-wordmark colored"></i> <i class="devicon-meteor-plain-wordmark colored"></i><h1></h2>
-      <h2>Databases: <h1><i class="devicon-mysql-plain-wordmark colored"></i> <i class="devicon-mongodb-plain-wordmark colored"></i></h1></h2>
-      <!-- Table of skills -->
-      <div ng-controller="skillCtrl">
-	      <form>
-		    <div class="form-group">
-		      <div class="input-group">
-		        <div class="input-group-addon"><i class="fa fa-search"></i></div>
-		        <input type="text" class="form-control" placeholder="Search my skill set!" ng-model="searchSkills">
-		      </div>      
-		    </div>
-	  	  </form>
-	  	  I have {{skills.length | angular}} skills
-	  	  <table id="searchTextResults">
+    	<div class="row">
+    		<div class="col-md-12">
+    			<h1>Hey Visitor! Take a quick look at the technologies I've worked with.</h1>
+    		</div>
+    	</div>
+      
+      <hr />
+      <div id="skillTable" ng-controller="skillCtrl">
+      	<div class="row">
+      		<div class="col-md-3"><button ng-model="backend" ng-init="backend=false" ng-click="sortBack()" type="button" class="btn btn-danger center-block">Back-end</button></div>
+      		<div class="col-md-3"><button ng-model="frontend" ng-init="frontend=false" ng-click="sortFront()" type="button" class="btn btn-success center-block">Front-end</button></div>
+      		<div class="col-md-3"><button ng-model="mobile" ng-init="mobile=false" ng-click="sortMobile()" type="button" class="btn btn-warning center-block">Mobile</button></div>
+      		<div class="col-md-3"><button ng-model="allskills" ng-init="allskills=true" ng-click="sortAll()" type="button" class="btn btn-primary center-block">View All</button></div>
+      	</div>
+	  	  <hr />
+	  	<div class="row">
+  			<form>
+			    <div class="form-group">
+			      <div class="input-group">
+			        <div class="input-group-addon"><i class="fa fa-search"></i></div>
+			        <div class="clearfix">
+			        	<input type="text" class="form-control" placeholder="Search my skill set!" ng-model="searchSkills">
+			        </div>
+			      </div>      
+			    </div>
+  	  		</form>
+	  	</div>
+	  	 
+
+	  	  <!-- <table ng-if="showAll" class="table table-hover" id="searchTextResults">
 	  		<tr><th>Type</th><th>Icon</th><th>Skill</th></tr>
 	  		<tr ng-repeat="skill in skills | filter:searchSkills">
-	    		<td>{{skill.type | angular}}</td>
-	    		<td>{{skill.icon | angular}}</td>
-	    		<td>{{skill.skill | angular}}</td>
+	    		<td>{[{skill.type}]}</td>
+	    		<td><i class="{[{skill.icon}]}"></i></td>
+	    		<td>{[{skill.skill}]}</td>
+	  		</tr>
+		  </table> -->
+
+		  <!-- Divs for sorting back-end, front-end, or mobile -->
+		  <!-- frameworks -->
+	  	<div class="row">
+	  		<!-- ALL FRAMEWORKS -->
+	  		<span ng-if="allskills" class="animate-if">
+			  	<h3 class="col-md-6">Frameworks: </h3>
+			  	<div class="col-md-6">
+			  		<span ng-repeat="skill in skills | filter:searchSkills" class="repeated-item">
+			  			<span ng-if="skill.type == 'framework'">
+			  				<i id="iconSize" class="{[{ skill.icon }]}"></i>
+			  			</span>
+			  		</span>
+			  	</div>
+		  	</span>
+	  		<!-- Backend frameworks -->
+	  		<span ng-if="backend" class="animate-if">
+			  	<h3 class="col-md-6">Frameworks: </h3>
+			  	<div class="col-md-6">
+			  		<span ng-repeat="skill in skills | filter:searchSkills" class="repeated-item">
+			  			<span ng-if="skill.dev_type == 'Back-end'">
+				  			<span ng-if="skill.type == 'framework'">
+				  				<i id="iconSize" class="{[{ skill.icon }]}"></i>
+				  			</span>
+				  		</span>
+			  		</span>
+			  	</div>
+		  	</span>
+		  	<!-- Frontend frameworks -->
+		  	<span ng-if="frontend" class="animate-if">
+			  	<h3 class="col-md-6">Frameworks: </h3>
+			  	<div class="col-md-6">
+			  		<span ng-repeat="skill in skills | filter:searchSkills" class="repeated-item">
+			  			<span ng-if="skill.dev_type == 'Front-end'">
+				  			<span ng-if="skill.type == 'framework'">
+				  				<i id="iconSize" class="{[{ skill.icon }]}"></i>
+				  			</span>
+				  		</span>
+			  		</span>
+			  	</div>
+		  	</span>
+		  	<!-- Mobile -->
+		  	<!-- No mobile frameworksyet -->
+		</div>
+		<hr />
+		<!-- Languages -->
+		<div class="row">
+			<!-- ALL LANGUAGES -->
+			<span ng-if="allskills" class="animate-if">
+			  	<h3 class="col-md-6">Languages: </h3>
+			  	<div class="col-md-6">
+			  		<span ng-repeat="skill in skills | filter:searchSkills" class="repeated-item">
+			  			<span ng-if="skill.type == 'language'">
+			  				<i id="iconSize" class="{[{ skill.icon }]}"></i>
+			  			</span>
+			  		</span>
+			  	</div>
+		  	</span>
+			<!-- Backend langs -->
+	  		<span ng-if="backend" class="animate-if">
+			  	<h3 class="col-md-6">Languages: </h3>
+			  	<div class="col-md-6">
+			  		<span ng-repeat="skill in skills | filter:searchSkills">
+			  			<span ng-if="skill.dev_type == 'Back-end'">
+				  			<span ng-if="skill.type == 'language'">
+				  				<i id="iconSize" class="{[{ skill.icon }]}"></i>
+				  			</span>
+				  		</span>
+			  		</span>
+			  	</div>
+		  	</span>
+		  	<!-- frontend langs -->
+		  	<span ng-if="frontend" class="animate-if">
+			  	<h3 class="col-md-6">Languages: </h3>
+			  	<div class="col-md-6">
+			  		<span ng-repeat="skill in skills | filter:searchSkills" class="repeated-item">
+			  			<span ng-if="skill.dev_type == 'Front-end'">
+				  			<span ng-if="skill.type == 'language'">
+				  				<i id="iconSize" class="{[{ skill.icon }]}"></i>
+				  			</span>
+				  		</span>
+			  		</span>
+			  	</div>
+		  	</span>
+		  	<!-- Mobile langs -->
+		  	<span ng-if="mobile" class="animate-if">
+			  	<h3 class="col-md-6">Platforms: </h3>
+			  	<div class="col-md-6">
+			  		<span ng-repeat="skill in skills | filter:searchSkills" class="repeated-item">
+			  			<span ng-if="skill.dev_type == 'Mobile'">
+				  			<span ng-if="skill.type == 'language'">
+				  				<i id="iconSize" class="{[{ skill.icon }]}"></i>
+				  			</span>
+				  		</span>
+			  		</span>
+			  	</div>
+		  	</span>
+		</div>
+		  
+
+		  <!-- <table ng-if="showBack" class="table table-hover" id="searchTextResults">
+	  		<tr><th>Skill</th><th>Icon</th></tr>
+	  		<tr ng-repeat="skill in skills | filter:searchSkills">
+	    		<td ng-if="skill.dev_type = 'Back-end'"><i class="{[{skill.icon}]}"></i></td>
+	    		<td ng-if="skill.dev_type = 'Back-end'">{[{skill.skill}]}</td>
+	  		</tr>
+		  </table> -->
+
+		  <!-- <table ng-if="showFront" class="table table-hover" id="searchTextResults">
+	  		<tr><th>Skill</th><th>Icon</th></tr>
+	  		<tr ng-repeat="skill in skills | filter:searchSkills">
+	    		<td ng-if="skill.dev_type = 'Front-end'"><i class="{[{skill.icon}]}"></i></td>
+	    		<td ng-if="skill.dev_type = 'Front-end'">{[{skill.skill}]}</td>
 	  		</tr>
 		  </table>
 
+		  <table ng-if="showMobile" class="table table-hover" id="searchTextResults">
+	  		<tr><th>Skill</th><th>Icon</th></tr>
+	  		<tr ng-repeat="skill in skills | filter:searchSkills">
+	    		<td ng-if="skill.dev_type = 'Mobile' "><i class="{[{skill.icon}]}"></i></td>
+	    		<td ng-if="skill.dev_type = 'Mobile' ">{[{skill.skill}]}</td>
+	  		</tr>
+		  </table> -->
 
-      
       </div>
+      <!-- ended skill controller -->
+
+
       <hr />
 
     </div>
