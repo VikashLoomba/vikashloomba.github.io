@@ -1,6 +1,6 @@
   </div>
   <div class="container">
-    <div id="welcome-greeting">
+    <div ng-app="myApp" id="welcome-greeting">
       <h1>Hey Visitor! Here's a little bit about my experience.</h1>
       <h2>Mobile Development: <h1><i class="devicon-apple-original colored"></i></h1>(Swift) </h2>
       <h2>Front-end languages: <h1><i class="devicon-html5-plain-wordmark colored"></i> <i class="devicon-css3-plain-wordmark colored"></i> </h1></h2>
@@ -8,7 +8,31 @@
       <h2>Back-end languages: <h1><i class="devicon-javascript-plain colored"></i> <i class="devicon-php-plain colored"></i></h1></h2>
       <h2>Back-end frameworks: <h1><i class="devicon-codeigniter-plain-wordmark colored"></i> <i class="devicon-nodejs-plain-wordmark colored"></i> <i class="devicon-meteor-plain-wordmark colored"></i><h1></h2>
       <h2>Databases: <h1><i class="devicon-mysql-plain-wordmark colored"></i> <i class="devicon-mongodb-plain-wordmark colored"></i></h1></h2>
+      <!-- Table of skills -->
+      <div ng-controller="skillCtrl">
+	      <form>
+		    <div class="form-group">
+		      <div class="input-group">
+		        <div class="input-group-addon"><i class="fa fa-search"></i></div>
+		        <input type="text" class="form-control" placeholder="Search my skill set!" ng-model="searchSkills">
+		      </div>      
+		    </div>
+	  	  </form>
+	  	  I have {{skills.length | angular}} skills
+	  	  <table id="searchTextResults">
+	  		<tr><th>Type</th><th>Icon</th><th>Skill</th></tr>
+	  		<tr ng-repeat="skill in skills | filter:searchSkills">
+	    		<td>{{skill.type | angular}}</td>
+	    		<td>{{skill.icon | angular}}</td>
+	    		<td>{{skill.skill | angular}}</td>
+	  		</tr>
+		  </table>
+
+
+      
+      </div>
       <hr />
+
     </div>
   </div>
   <div class ="container">
