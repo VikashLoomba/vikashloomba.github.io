@@ -2,25 +2,139 @@
 title: About
 ---
 <div class="container">
-  <div class="container">
-    <div class="row">
-      <div class="user-card">
-        <div class="row">
-          <div class="card col-md-3">
-            <img src="{{ site.baseurl }}/images/self.jpg">
-          </div>
-          <div class="col-md-9">
-            <h1>Herring Cove</h1>
-            <p><i class="fa fa-map-marker"></i>&nbsp;&nbsp;42°2'16"N   70°12'47"W</p>
-            <p><i class="fa fa-envelope-o"></i>&nbsp;rnpatel[at]me.com </p>
-            <hr />
-          </div>
+
+
+  <link href="{{ site.baseurl }}/css/buttons.css" rel="stylesheet">
+    <div ng-app="myApp" id="welcome-greeting">
+      <div class="row">
+        <div class="col-md-12">
+          <h1>Here's a quick look at the technologies I've worked with.</h1>
         </div>
+      </div>
+      
+      <hr />
+      <div id="skillTable" ng-controller="skillCtrl">
         <div class="row">
-          <div class="col-md-12 letter">
-            <p>Hi, I'm Herring Cove, a theme for Jekyll from Massachusetts. You may also know me as a <a href="http://wikimapia.org/38526/Herring-Cove-Beach">beach on Cape Cod</a>.</p>
-          </div>
+          <div class="col-md-3"><button ng-model="backend" ng-init="backend=false" ng-click="sortBack()" type="button" class="btn btn-danger center-block">Back-end</button></div>
+          <div class="col-md-3"><button ng-model="frontend" ng-init="frontend=false" ng-click="sortFront()" type="button" class="btn btn-success center-block">Front-end</button></div>
+          <div class="col-md-3"><button ng-model="mobile" ng-init="mobile=false" ng-click="sortMobile()" type="button" class="btn btn-warning center-block">Mobile</button></div>
+          <div class="col-md-3"><button ng-model="allskills" ng-init="allskills=true" ng-click="sortAll()" type="button" class="btn btn-primary center-block">View All</button></div>
         </div>
+        <hr />
+        <div class="row">
+          <form>
+            <div class="form-group">
+              <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-search"></i></div>
+                <div class="clearfix">
+                  <input type="text" class="form-control" placeholder="Search my skill set!" ng-model="searchSkills">
+                </div>
+              </div>      
+            </div>
+            </form>
+        </div>
+    
+
+        <!-- Divs for sorting back-end, front-end, or mobile -->
+        <!-- frameworks -->
+        <div class="row">
+          <!-- ALL FRAMEWORKS -->
+          <span ng-if="allskills" class="animate-if">
+            <h3 class="col-md-6">Frameworks: </h3>
+            <div class="col-md-6">
+              <span ng-repeat="skill in skills | filter:searchSkills" class="repeated-item">
+                <span ng-if="skill.type == 'framework'">
+                  <i id="iconSize" class="{[{ skill.icon }]}"></i>
+                </span>
+              </span>
+            </div>
+          </span>
+          <!-- Backend frameworks -->
+          <span ng-if="backend" class="animate-if">
+            <h3 class="col-md-6">Frameworks: </h3>
+            <div class="col-md-6">
+              <span ng-repeat="skill in skills | filter:searchSkills" class="repeated-item">
+                <span ng-if="skill.dev_type == 'Back-end'">
+                  <span ng-if="skill.type == 'framework'">
+                    <i id="iconSize" class="{[{ skill.icon }]}"></i>
+                  </span>
+                </span>
+              </span>
+            </div>
+          </span>
+          <!-- Frontend frameworks -->
+          <span ng-if="frontend" class="animate-if">
+            <h3 class="col-md-6">Frameworks: </h3>
+            <div class="col-md-6">
+              <span ng-repeat="skill in skills | filter:searchSkills" class="repeated-item">
+                <span ng-if="skill.dev_type == 'Front-end'">
+                  <span ng-if="skill.type == 'framework'">
+                    <i id="iconSize" class="{[{ skill.icon }]}"></i>
+                  </span>
+                </span>
+              </span>
+            </div>
+          </span>
+          <!-- Mobile -->
+          <!-- No mobile frameworksyet -->
+        </div>
+        <hr />
+        <!-- Languages -->
+        <div class="row">
+          <!-- ALL LANGUAGES -->
+          <span ng-if="allskills" class="animate-if">
+              <h3 class="col-md-6">Languages: </h3>
+              <div class="col-md-6">
+                <span ng-repeat="skill in skills | filter:searchSkills" class="repeated-item">
+                  <span ng-if="skill.type == 'language'">
+                    <i id="iconSize" class="{[{ skill.icon }]}"></i>
+                  </span>
+                </span>
+              </div>
+            </span>
+          <!-- Backend langs -->
+            <span ng-if="backend" class="animate-if">
+              <h3 class="col-md-6">Languages: </h3>
+              <div class="col-md-6">
+                <span ng-repeat="skill in skills | filter:searchSkills">
+                  <span ng-if="skill.dev_type == 'Back-end'">
+                    <span ng-if="skill.type == 'language'">
+                      <i id="iconSize" class="{[{ skill.icon }]}"></i>
+                    </span>
+                  </span>
+                </span>
+              </div>
+            </span>
+            <!-- frontend langs -->
+            <span ng-if="frontend" class="animate-if">
+              <h3 class="col-md-6">Languages: </h3>
+              <div class="col-md-6">
+                <span ng-repeat="skill in skills | filter:searchSkills" class="repeated-item">
+                  <span ng-if="skill.dev_type == 'Front-end'">
+                    <span ng-if="skill.type == 'language'">
+                      <i id="iconSize" class="{[{ skill.icon }]}"></i>
+                    </span>
+                  </span>
+                </span>
+              </div>
+            </span>
+            <!-- Mobile langs -->
+            <span ng-if="mobile" class="animate-if">
+              <h3 class="col-md-6">Platforms: </h3>
+              <div class="col-md-6">
+                <span ng-repeat="skill in skills | filter:searchSkills" class="repeated-item">
+                  <span ng-if="skill.dev_type == 'Mobile'">
+                    <span ng-if="skill.type == 'language'">
+                      <i id="iconSize" class="{[{ skill.icon }]}"></i>
+                    </span>
+                  </span>
+                </span>
+              </div>
+            </span>
+        </div>
+      </div>
+      <!-- ended skill controller -->
+
+
+      <hr />
     </div>
-  </div>
-</div>

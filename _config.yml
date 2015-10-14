@@ -11,7 +11,7 @@ email: me@vikashloomba.com
 # disqus: diqus-username
 
 ##Make sure to edit the above fields, especially for disqus.
-
+permalink: /blog/:title
 highlighter: pygments
 markdown: redcarpet
 redcarpet:
