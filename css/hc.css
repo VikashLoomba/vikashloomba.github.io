@@ -81,10 +81,10 @@ h1,h2,h3,h4,h5,h6
 #iconSize
 {
   font-size: 7rem;
-  padding-right: 5%;
-  padding-left: 5%;
-  padding-top: 5%;
-  padding-bottom: 5%;
+  margin-right: 5%;
+  margin-left: 5%;
+  margin-top: 5%;
+  margin-bottom: 5%;
 }
 
 h1
