@@ -12,7 +12,8 @@ app.controller('skillCtrl', function($scope) {
                          {dev_type:'Back-end', type: 'language', skill:'PHP', icon: 'devicon-php-plain colored'}, 
                          {dev_type:'Back-end', type: 'framework', skill:'CodeIgniter', icon: 'devicon-codeigniter-plain-wordmark colored'}, 
                          {dev_type:'Back-end', type: 'framework', skill:'NodeJS', icon: 'devicon-nodejs-plain-wordmark colored'},
-                         {dev_type:'Back-end', type: 'framework', skill:'Meteor', icon: 'devicon-meteor-plain-wordmark colored'}];
+                         {dev_type:'Back-end', type: 'framework', skill:'Meteor', icon: 'devicon-meteor-plain-wordmark colored'},
+                         {dev_type:'Back-end', type: 'language', skill:'Java', icon: 'devicon-java-plain-wordmark colored'}];
      $scope.sortBack = function() {
           if ($scope.backend == true) {
                $scope.backend = false;
