@@ -80,13 +80,6 @@
       <hr />
       <div id="skillTable" ng-controller="skillCtrl">
         <div class="row">
-          <div class="col-md-3"><button ng-model="backend" ng-init="backend=false" ng-click="sortBack()" type="button" class="btn btn-danger center-block">Back-end</button></div>
-          <div class="col-md-3"><button ng-model="frontend" ng-init="frontend=false" ng-click="sortFront()" type="button" class="btn btn-success center-block">Front-end</button></div>
-          <div class="col-md-3"><button ng-model="mobile" ng-init="mobile=false" ng-click="sortMobile()" type="button" class="btn btn-warning center-block">Mobile</button></div>
-          <div class="col-md-3"><button ng-model="allskills" ng-init="allskills=true" ng-click="sortAll()" type="button" class="btn btn-primary center-block">View All</button></div>
-        </div>
-        <hr />
-        <div class="row">
           <form>
             <div class="form-group">
               <div class="input-group">
@@ -97,6 +90,13 @@
               </div>      
             </div>
             </form>
+        </div>
+        <hr />
+        <div class="row">
+          <div class="col-md-3"><button ng-model="backend" ng-init="backend=false" ng-click="sortBack()" type="button" class="btn btn-danger center-block">Back-end</button></div>
+          <div class="col-md-3"><button ng-model="frontend" ng-init="frontend=false" ng-click="sortFront()" type="button" class="btn btn-success center-block">Front-end</button></div>
+          <div class="col-md-3"><button ng-model="mobile" ng-init="mobile=false" ng-click="sortMobile()" type="button" class="btn btn-warning center-block">Mobile</button></div>
+          <div class="col-md-3"><button ng-model="allskills" ng-init="allskills=true" ng-click="sortAll()" type="button" class="btn btn-primary center-block">View All</button></div>
         </div>
     
 
